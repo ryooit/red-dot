@@ -25,8 +25,8 @@ def load_dots(im, dots_path, random):
         y_arr = np.asarray(y_list).reshape(-1, 1)
     else:
         data = pd.read_csv(dots_path)
-        x_arr = data.iloc[:, 0].values.reshape(-1, 1)
-        y_arr = data.iloc[:, 1].values.reshape(-1, 1)
+        x_arr = data.iloc[:, 3].values.reshape(-1, 1)
+        y_arr = data.iloc[:, 4].values.reshape(-1, 1)
     return x_arr, y_arr
 
 
@@ -48,8 +48,8 @@ def plot_dots_on_image(im, xs, ys, res_Y):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--image', required=True, help="Path to the image")
-    parser.add_argument('--dots', required=True, help='Path to x, y coordinate pairs of red dots')
+    parser.add_argument('--image', default='test.tif', help="Path to the image")
+    parser.add_argument('--dots', default='dots.txt', help='Path to x, y coordinate pairs of red dots')
     parser.add_argument('--random', default=False, type=bool, help='Use random dots [true, false]')
     config = parser.parse_args()
 
